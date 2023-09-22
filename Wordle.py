@@ -29,14 +29,20 @@ print(randomWord)
 
 def wordle():
 
-    def Shared(tke):
+    def Shared():
         # if isinstance(tke, str):
-        ch = tke
-        print(ch)
-        if ch == "Share Results":
-            for k in range(N_ROWS):
-                for y in range(N_COLS):
-                    gw.set_square_letter(k,y," ")
+        
+        print('share')
+        
+        for k in range(N_ROWS):
+            for y in range(N_COLS):
+                gw.set_square_letter(k,y," ")
+
+        for l in KEY_LABELS:
+            for letter in l:
+
+                print(letter)
+                gw.set_key_color(letter, MISSING_COLOR)
             
 
     def enter_action(s):
@@ -110,7 +116,7 @@ def wordle():
                 
 
             if x == 5:
-                gw.show_message("Congrats you have guessed the word!")
+                gw.show_message("Congrats you have guessed the word in " + str(gw.get_current_row() ) + " tries!")
                 gw.set_current_row(gw.get_current_row() + 6)
         else:
             gw.show_message("Not in word list")
@@ -119,6 +125,12 @@ def wordle():
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
+
+    btn = Button(gw._root, text = 'Share', bd = '5',
+                          command = Shared)
+    btn.place(x=352, y=465)
+
+    # btn.pack()
     
     # gw._root.bind("<Key>", gw.key_action)
     # gw._root.bind("<ButtonPress-1>", gw.press_action)
@@ -131,9 +143,9 @@ def wordle():
     # root.bind("<ButtonPress-1>", gw.press_action)
     # root.bind("<ButtonRelease-1>", gw.release_action)
     
-    shareResults = WordleKey(gw._canvas, 352, 465, 122, 50, "Share Results")
+    # shareResults = WordleKey(gw._canvas, 352, 465, 122, 50, "Share Results")
 
-    Shared(shareResults)
+    # Shared(shareResults)
     
     # Marcus' Button Tests
     # window = Tk()
