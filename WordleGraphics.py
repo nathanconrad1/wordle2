@@ -22,7 +22,7 @@ UNKNOWN_COLOR = "#FFFFFF"  # Undetermined letters are white
 KEY_COLOR = "#DDDDDD"  # Keys are colored light gray
 
 CANVAS_WIDTH = 500  # Width of the tkinter canvas (pixels)
-CANVAS_HEIGHT = 700  # Height of the tkinter canvas (pixels)
+CANVAS_HEIGHT = 750  # Height of the tkinter canvas (pixels)
 
 SQUARE_SIZE = 60  # Size of each square (pixels)
 SQUARE_SEP = 5  # Separation between squares (pixels)

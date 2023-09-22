@@ -6,7 +6,7 @@ BE SURE TO UPDATE THIS COMMENT WHEN YOU WRITE THE CODE.
 """
 
 import random
-
+import tkinter
 from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import (
     WordleGWindow,
@@ -28,6 +28,17 @@ print(randomWord)
 
 
 def wordle():
+
+    def Shared(tke):
+        # if isinstance(tke, str):
+        ch = tke
+        print(ch)
+        if ch == "Share Results":
+            for k in range(N_ROWS):
+                for y in range(N_COLS):
+                    gw.set_square_letter(k,y," ")
+            
+
     def enter_action(s):
         if s.lower() in FIVE_LETTER_WORDS:
             nextLetter = []
@@ -104,13 +115,30 @@ def wordle():
         else:
             gw.show_message("Not in word list")
 
+    # root = tkinter.tk()
+
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
+    
+    # gw._root.bind("<Key>", gw.key_action)
+    # gw._root.bind("<ButtonPress-1>", gw.press_action)
+    # gw._root.bind("<ButtonRelease-1>", gw.release_action)
+    # gw.add_enter_listener(shareAction)
 
+    # root = tkinter.Tk()
+
+    # root.bind("<Key>", gw.key_action)
+    # root.bind("<ButtonPress-1>", gw.press_action)
+    # root.bind("<ButtonRelease-1>", gw.release_action)
+    
+    shareResults = WordleKey(gw._canvas, 352, 465, 122, 50, "Share Results")
+
+    Shared(shareResults)
+    
     # Marcus' Button Tests
-    window = Tk()
-    button = Button(window, text="Hola")
-    button.pack()
+    # window = Tk()
+    # button = Button(window, text="Hola")
+    # button.pack()
 
     # kl = KEY_LABELS()
     # kl.append("Change Color Scheme")
