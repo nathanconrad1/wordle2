@@ -10,12 +10,12 @@ import random
 from WordleDictionary import FIVE_LETTER_WORDS
 from WordleGraphics import (
     WordleGWindow,
-    N_COLS,
-    N_ROWS,
     CORRECT_COLOR,
     PRESENT_COLOR,
     MISSING_COLOR,
-    KEY_LABELS,
+    CORRECT_COLOR_OPTION,
+    PRESENT_COLOR_OPTION,
+    MISSING_COLOR_OPTION,
     WordleKey,
 )
 
@@ -48,9 +48,9 @@ def wordle():
             chosenTemp = chosenLetter
 
             for index, anyLetter in enumerate(chosenLetter):
-                # if chosenLetter[index] in nextLetter:
-                #     print("yellow")
-                #     gw.set_square_color(gw.get_current_row(), index, PRESENT_COLOR)
+                if chosenLetter[index] in nextLetter:
+                    print("yellow")
+                    gw.set_square_color(gw.get_current_row(), index, PRESENT_COLOR)
 
                 if chosenLetter[index] not in nextLetter:
                     gw.set_key_color(chosenLetter[index], MISSING_COLOR)
@@ -58,9 +58,9 @@ def wordle():
                 gw.set_square_color(gw.get_current_row(), index, MISSING_COLOR)
         
             for index, anyLetter in enumerate(nextLetter):
-                # if chosenLetter[index] in nextLetter:
-                #     print("yellow")
-                #     gw.set_square_color(gw.get_current_row(), index, PRESENT_COLOR)
+                if chosenLetter[index] in nextLetter:
+                    print("yellow")
+                    gw.set_square_color(gw.get_current_row(), index, PRESENT_COLOR)
 
                 if anyLetter == chosenLetter[index]:
                     print("green")
@@ -89,14 +89,11 @@ def wordle():
                 # if chosenTemp[index] in tempList:
             # for index, grey in enumerate(tempList):
 
-
-
             gw.set_current_row(gw.get_current_row() + 1)
 
             for index, finished in enumerate(tempList):
                 if tempList[index] == '_':
                     x += 1
-                
 
             if x == 5:
                 gw.show_message("Congrats you have guessed the word!")
@@ -107,24 +104,22 @@ def wordle():
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
-    # Marcus' Button Tests
-    window = Tk()
-    button = Button(window, text="Hola")
-    button.pack()
+    # Share Results Button
+    shareResults = WordleKey(gw._canvas, 352, 465, 122, 50, "Share Results")
 
-    # kl = KEY_LABELS()
-    # kl.append("Change Color Scheme")
+    # Color Scheme Button
+    colorScheme = WordleKey(gw._canvas, 28, 465, 190, 50, "Change Color Scheme")
 
-    # wk = WordleKey(Canvas, X, Y, 25, 25, "Change Color Scheme")
-    # colorSchemeBtn = Button(wk, text="Change Color Scheme")
-    # colorSchemeBtn.pack()
+    # Function to change color scheme
+    #def changeColorScheme():
+        # Do we just use the same code above for "def enter_action(s)" and then swap out CORRECT_COLOR for CORRECT_COLOR_OPTION,
+        # PRESENT_COLOR for PRESENT_COLOR_OPTION, and MISING_COLOR for MISSING_COLOR_OPTION? Or is there a more simple way??
 
     # Milestone 1:
     # Breaks word up
     # for index, letter in enumerate(randomWord):
     #     nextLetter.append(letter)
     #     gw.set_square_letter(N_COLS - 5, index, letter)
-
 
 # Startup code
 if __name__ == "__main__":

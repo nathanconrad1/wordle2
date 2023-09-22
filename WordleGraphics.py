@@ -15,6 +15,9 @@ import tkinter
 N_ROWS = 6  # Number of rows
 N_COLS = 5  # Number of columns
 
+CORRECT_COLOR_OPTION = "#ADD8E6" # Light blue for correct letters
+PRESENT_COLOR_OPTION = "#ffcccb" # Red for letters that don't appear
+MISSING_COLOR_OPTION = "#FFD580" # Light orange for misplaced letters
 CORRECT_COLOR = "#66BB66"  # Light green for correct letters
 PRESENT_COLOR = "#CCBB66"  # Brownish yellow for misplaced letters
 MISSING_COLOR = "#999999"  # Gray for letters that don't appear
@@ -22,7 +25,7 @@ UNKNOWN_COLOR = "#FFFFFF"  # Undetermined letters are white
 KEY_COLOR = "#DDDDDD"  # Keys are colored light gray
 
 CANVAS_WIDTH = 500  # Width of the tkinter canvas (pixels)
-CANVAS_HEIGHT = 700  # Height of the tkinter canvas (pixels)
+CANVAS_HEIGHT = 750  # Height of the tkinter canvas (pixels)
 
 SQUARE_SIZE = 60  # Size of each square (pixels)
 SQUARE_SEP = 5  # Separation between squares (pixels)
