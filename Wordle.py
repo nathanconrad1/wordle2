@@ -21,6 +21,11 @@ from WordleGraphics import (
 
 from tkinter import *
 
+
+CORRECT_COLOR_OPTION = "#ADD8E6" # Light blue for correct letters
+PRESENT_COLOR_OPTION = "#ffcccb" # Red for letters that don't appear
+MISSING_COLOR_OPTION = "#FFD580" # Light orange for misplaced letters
+
 # Selects random word
 randomWord = random.choice(FIVE_LETTER_WORDS)
 
@@ -28,6 +33,17 @@ print(randomWord)
 
 
 def wordle():
+
+    def changeColor():
+        for k in range(N_ROWS):
+            for y in range(N_COLS):
+                if gw.get_square_color(k,y) == CORRECT_COLOR:
+                    gw.set_square_color(k, y, CORRECT_COLOR_OPTION)
+                elif gw.get_square_color(k,y) == PRESENT_COLOR:
+                    gw.set_square_color(k, y, PRESENT_COLOR_OPTION)
+                elif gw.get_square_color(k,y) == MISSING_COLOR:
+                    gw.set_square_color(k, y, MISSING_COLOR_OPTION)
+
 
     def Shared():
         # if isinstance(tke, str):
@@ -129,6 +145,10 @@ def wordle():
     btn = Button(gw._root, text = 'Share', bd = '5',
                           command = Shared)
     btn.place(x=352, y=465)
+
+    btnOne = Button(gw._root, text = 'Change Color Scheme', bd = '5',
+                          command = changeColor)
+    btnOne.place(x=30, y=480)
 
     # btn.pack()
     
