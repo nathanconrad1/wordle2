@@ -16,6 +16,7 @@ from WordleGraphics import (
     CORRECT_COLOR_OPTION,
     PRESENT_COLOR_OPTION,
     MISSING_COLOR_OPTION,
+    UNKNOWN_COLOR,
     WordleKey,
 )
 
@@ -105,10 +106,11 @@ def wordle():
     gw.add_enter_listener(enter_action)
 
     # Share Results Button
-    shareResults = WordleKey(gw._canvas, 352, 465, 122, 50, "Share Results")
+    #shareResults = WordleKey(gw._canvas, 352, 465, 122, 50, "Share Results")
 
     # Color Scheme Button
-    colorScheme = WordleKey(gw._canvas, 28, 465, 190, 50, "Change Color Scheme")
+    #colorScheme = WordleKey(gw._canvas, 28, 465, 190, 50, "Change Color Scheme")
+    #print(colorScheme._bounds)
 
     # Function to change color scheme
     #def changeColorScheme():
