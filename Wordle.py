@@ -21,9 +21,12 @@ from WordleGraphics import (
 
 from tkinter import *
 
-
+modNum = '2'
+cSaver = CORRECT_COLOR
+pSaver = PRESENT_COLOR
+mSaver = MISSING_COLOR
 CORRECT_COLOR_OPTION = "#ADD8E6" # Light blue for correct letters
-PRESENT_COLOR_OPTION = "#ffcccb" # Red for letters that don't appear
+PRESENT_COLOR_OPTION = "#FFCCCB" # Red for letters that don't appear
 MISSING_COLOR_OPTION = "#FFD580" # Light orange for misplaced letters
 
 # Selects random word
@@ -35,15 +38,72 @@ print(randomWord)
 def wordle():
 
     def changeColor():
-        for k in range(N_ROWS):
-            for y in range(N_COLS):
-                if gw.get_square_color(k,y) == CORRECT_COLOR:
-                    gw.set_square_color(k, y, CORRECT_COLOR_OPTION)
-                elif gw.get_square_color(k,y) == PRESENT_COLOR:
-                    gw.set_square_color(k, y, PRESENT_COLOR_OPTION)
-                elif gw.get_square_color(k,y) == MISSING_COLOR:
-                    gw.set_square_color(k, y, MISSING_COLOR_OPTION)
+        
+        # print(str(MOD_NUM))
+        global CORRECT_COLOR
+        global PRESENT_COLOR
+        global MISSING_COLOR
+        global cSaver
+        global pSaver
+        global mSaver
 
+        
+
+        if CORRECT_COLOR == cSaver:
+            print('first')
+            for k in range(N_ROWS):
+                for y in range(N_COLS):
+                    if gw.get_square_color(k,y) == CORRECT_COLOR:
+                        gw.set_square_color(k, y, CORRECT_COLOR_OPTION)
+                    elif gw.get_square_color(k,y) == PRESENT_COLOR:
+                        gw.set_square_color(k, y, PRESENT_COLOR_OPTION)
+                    elif gw.get_square_color(k,y) == MISSING_COLOR:
+                        gw.set_square_color(k, y, MISSING_COLOR_OPTION)
+
+            for l in KEY_LABELS:
+                for letter in l:
+                    if gw.get_key_color(letter) == CORRECT_COLOR:
+                        gw.set_key_color(letter, CORRECT_COLOR_OPTION)
+                    elif gw.get_key_color(letter) == PRESENT_COLOR:
+                        gw.set_key_color(letter, PRESENT_COLOR_OPTION)
+                    elif gw.get_key_color(letter) == MISSING_COLOR:
+                        gw.set_key_color(letter, MISSING_COLOR_OPTION)
+            CORRECT_COLOR = CORRECT_COLOR_OPTION
+            PRESENT_COLOR = PRESENT_COLOR_OPTION
+            MISSING_COLOR = MISSING_COLOR_OPTION
+
+            
+
+        else:
+
+            print('second')
+            print(PRESENT_COLOR_OPTION)
+            for k in range(N_ROWS):
+                for y in range(N_COLS):
+                    print(gw.get_square_color(k,y))
+                    if gw.get_square_color(k,y) == CORRECT_COLOR_OPTION:
+                        gw.set_square_color(k, y, cSaver)
+                    elif gw.get_square_color(k, y) == PRESENT_COLOR_OPTION:
+                        gw.set_square_color(k, y, pSaver)
+                        print(pSaver)
+                    elif gw.get_square_color(k,y) == MISSING_COLOR_OPTION:
+                        gw.set_square_color(k, y, mSaver)
+
+            for l in KEY_LABELS:
+                for letter in l:
+                    if gw.get_key_color(letter) == CORRECT_COLOR_OPTION:
+                        gw.set_key_color(letter, cSaver)
+                    elif gw.get_key_color(letter) == PRESENT_COLOR_OPTION:
+                        gw.set_key_color(letter, pSaver)
+                    elif gw.get_key_color(letter) == MISSING_COLOR_OPTION:
+                        gw.set_key_color(letter, mSaver)
+
+            CORRECT_COLOR = cSaver
+            PRESENT_COLOR = pSaver
+            MISSING_COLOR = mSaver
+
+        
+            
 
     def Shared():
         # if isinstance(tke, str):
